@@ -71,7 +71,7 @@ install: ## Install in Dev Mode
 	@if [ "$(NODE_MODULES_EXISTS)" ]; then echo "Removing existing node environment"; fi
 	if [ "$(VENV_EXISTS)" ]; then rm -Rf .venv; fi
 	if [ "$(USING_POETRY)" ]; then poetry config virtualenvs.in-project true  && poetry config virtualenvs.options.always-copy true && python3 -m venv .venv && source .venv/bin/activate && .venv/bin/pip install -U wheel setuptools cython pip && poetry install --with lint,dev,docs && mkdir -p ./app/ui/public; fi
-	if [ "$(USING_NPM)" ]; then npm install; fi
+	if [ "$(USING_NPM)" ]; then npm ci; fi
 	if [ "$(USING_YARN)" ]; then yarn install; fi
 	if [ "$(USING_PNPM)" ]; then pnpm install; fi
 	@echo "=> Install complete.  ** If you want to re-install re-run 'make install'"
@@ -175,5 +175,4 @@ docs: docs-clean ## Dump the existing built docs and rebuild them
 # Workflow
 # =============================================================================
 run-dev: ## Run the uvicorn server and TailwindCSS with hot reloading
-	@poetry run tailwindcss -i app/static/input.css -o app/static/generated/tailwind.css --minify --watch &
-	@poetry run uvicorn app.asgi:app --reload
+	@npm run dev
