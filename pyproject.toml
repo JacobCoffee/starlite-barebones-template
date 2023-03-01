@@ -12,7 +12,7 @@ packages = [
 
 [tool.poetry.dependencies]
 python = "^3.10"
-starlite = "^1.50.1"
+starlite = "^1.51.2"
 uvicorn = "*"
 python-dotenv = "*"
 structlog = "*"
