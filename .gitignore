@@ -122,3 +122,6 @@ cython_debug/
 /.idea/starlite-barebones-template.iml
 /.idea/vcs.xml
 app/static/generated/*
+node_modules/
+app/static/*
+!app/static/.gitkeep
