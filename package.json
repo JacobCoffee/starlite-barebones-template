@@ -3,20 +3,10 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "dev": "npm run dev:ui",
-    "dev:api": "poetry run gluent-console run all --http-workers=1 --background-workers=1",
-    "dev:all": "npm run dev-all",
-    "dev-all": "concurrently --handle-input --default-input-target='api' --kill-others --raw --names='ui,api' \"npm run dev:ui\" \"npm run dev:api\" ",
-    "prettier": "npx prettier --write .",
-    "prettier-check": "npx prettier --check .",
-    "license": "npx license-report --only=prod --output=html --config license-report-config.json",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "gen-api": "poetry run python3 scripts/export-openapi-schema && rm -rf src/ui/src/api/client && npx @openapitools/openapi-generator-cli generate -i ./src/ui/spec/openapi.json -g typescript -o src/ui/src/api/client --additional-properties withSeparateModelsAndApi=true,supportsES6=true,useSingleRequestParameter=true,apiPackage=api,modelPackage=models",
-    "cy-run-ct-chrome": "cypress run-ct --browser chrome",
-    "cy-run-ct-firefox": "cypress run-ct --browser firefox",
-    "cy-run-it-chrome": "cypress run --browser chrome",
-    "cy-run-it-firefox": "cypress run --browser firefox",
-    "cy-open": "cypress open"
+    "dev:api": "poetry run uvicorn app.asgi:app --reload",
+    "dev:ui": "tailwindcss -i app/templates/assets/input.css -o app/static/tailwind.css --minify --watch",
+    "dev": "concurrently --handle-input --default-input-target='api' --kill-others --raw --names='ui,api' \"npm run dev:ui\" \"npm run dev:api\" ",
+    "prettier": "npx prettier --write ."
   },
   "repository": {
     "type": "git",
@@ -32,7 +22,6 @@
     "concurrently": "^7.6.0",
     "cross-env": "^7.0.3",
     "cssnano": "^5.1.14",
-    "cypress": "^12.2.0",
     "dotenv": "^16.0.3",
     "postcss": "^8.4.21",
     "postcss-import": "^15.1.0",

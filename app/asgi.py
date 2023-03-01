@@ -43,14 +43,10 @@ app = Starlite(
         engine=JinjaTemplateEngine,
     ),
     static_files_config=[
-        StaticFilesConfig(directories=[Path(__file__).parent / "static"], path="static"),
+        StaticFilesConfig(directories=[Path(__file__).parent / "static"], path="static", name="static_files"),
         StaticFilesConfig(
-            directories=[Path(__file__).parent / "templates"],
-            path="templates",
-            html_mode=True,
-            opt={"exclude_from_auth": True},
+            directories=[Path(__file__).parent.parent / "docs"], path="/docs", html_mode=True, name="docs"
         ),
-        StaticFilesConfig(directories=[Path(__file__).parent.parent / "docs"], path="/docs", html_mode=True),
     ],
     debug=True,
 )

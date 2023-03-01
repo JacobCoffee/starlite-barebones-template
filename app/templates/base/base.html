@@ -1,40 +1,28 @@
 <!DOCTYPE html>
 <html lang="en" class="min-h-screen">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="Content-Language" content="en">
-    <meta name="google" content="notranslate">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Language" content="en" />
+    <meta name="google" content="notranslate" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
 
-{#    <link rel="stylesheet" href="app/static/generated/tailwind.css">#}
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{{url_for_static_asset('static_files','tailwind.css')}}" />
     <title>{% block title %}{% endblock %} {{ title }}</title>
 
-    {% block extrahead %}{% endblock %}
-    {% block extrastyle %}{% endblock %}
+    {% block extrahead %}{% endblock %} {% block extrastyle %}{% endblock %}
+  </head>
+  <body class="min-h-screen bg-white-300 dark:bg-neutral-800">
+    <header>{% block header %} {% include 'base/header.html' %} {% endblock %}</header>
 
-</head>
-<body class="min-h-screen bg-white-300 dark:bg-neutral-800">
-<header>
-    {% block header %}
-        {% include 'base/header.html' %}
-    {% endblock %}
-</header>
+    <main>{% block content %}{% endblock content %}</main>
 
-<main>
-    {% block content %}{% endblock content %}
-</main>
+    <footer class="sticky top-[100vh] bg-white-300 dark:bg-neutral-800">
+      {% block footer %} {% include 'base/footer.html' %} {% endblock footer %}
+    </footer>
 
-<footer class="sticky top-[100vh] bg-white-300 dark:bg-neutral-800">
-    {% block footer %}
-        {% include 'base/footer.html' %}
-    {% endblock footer %}
-</footer>
-
-{% block extrajs %}{% endblock extrajs %}
-
-</body>
+    {% block extrajs %}{% endblock extrajs %}
+  </body>
 </html>
