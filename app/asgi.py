@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """Basic application for Starlite ASGI Framework"""
 from pathlib import Path
+from typing import Dict
 
 from starlite import MediaType, Starlite, StaticFilesConfig, Template, TemplateConfig, get
 from starlite.contrib.jinja import JinjaTemplateEngine
@@ -28,7 +29,7 @@ async def index() -> Template:
 
 
 @get(name="ping", path="/ping", tags=["Ping"])
-def ping_pong() -> dict[str, str]:
+def ping_pong() -> Dict[str, str]:
     """A simple test world endpoint."""
     return {"ping": "pong"}
 
