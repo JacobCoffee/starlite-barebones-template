@@ -30,6 +30,11 @@ ___
 
 ### Media
 Home Page
+
+**Light Mode**
+![image](https://user-images.githubusercontent.com/45884264/222229312-c7601954-8bb1-44b5-a861-55f191e68310.png)
+
+**Dark Mode**
 ![image](https://user-images.githubusercontent.com/45884264/216846442-5f06f3df-2457-420b-beb9-7c043ebbfcc0.png)
 
 API - Swagger
