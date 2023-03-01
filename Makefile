@@ -164,7 +164,7 @@ docs-clean: ## Dump the existing built docs
 docs-serve: ## Serve the docs locally
 	make clean
 	poetry run mkdocs build
-	poetry run mkdocs serve
+	poetry run mkdocs serve -a localhost:8002
 
 docs: docs-clean ## Dump the existing built docs and rebuild them
 	make clean
